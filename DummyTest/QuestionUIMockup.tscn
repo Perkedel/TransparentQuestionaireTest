@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://DummyTest/QuestionaireMockup.png" type="Texture" id=1]
+[ext_resource path="res://DummyTest/QuestionUIMockup.gd" type="Script" id=2]
+
+[node name="QuestionUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+ratio = 2.0
+
+[node name="Mockup" type="TextureRect" parent="AspectRatioContainer"]
+margin_top = 60.0
+margin_right = 1920.0
+margin_bottom = 1020.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer"]
+margin_top = 60.0
+margin_right = 1920.0
+margin_bottom = 1020.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/HBoxContainer"]
+margin_right = 958.0
+margin_bottom = 960.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TransparentToggle" type="CheckButton" parent="AspectRatioContainer/HBoxContainer/VBoxContainer"]
+margin_top = 438.0
+margin_right = 958.0
+margin_bottom = 478.0
+text = "Transperent"
+
+[node name="ExitButton" type="Button" parent="AspectRatioContainer/HBoxContainer/VBoxContainer"]
+margin_top = 482.0
+margin_right = 958.0
+margin_bottom = 522.0
+rect_min_size = Vector2( 0, 40 )
+text = "Exit"
+flat = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AspectRatioContainer/HBoxContainer"]
+margin_left = 962.0
+margin_right = 1920.0
+margin_bottom = 960.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="toggled" from="AspectRatioContainer/HBoxContainer/VBoxContainer/TransparentToggle" to="." method="_on_TransparentToggle_toggled"]
+[connection signal="pressed" from="AspectRatioContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]

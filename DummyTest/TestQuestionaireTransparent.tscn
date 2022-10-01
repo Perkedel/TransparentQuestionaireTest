@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://DummyTest/TestQuestionaireTransparent.gd" type="Script" id=1]
+[ext_resource path="res://DummyTest/QuestionUIMockup.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.5
+mid_height = 0.5
+
+[sub_resource type="ProceduralSky" id=3]
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 3 )
+ambient_light_sky_contribution = 0.26
+
+[node name="TestQuestionaireTransparent" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.965926, 0, -0.258819, 0.0669873, 0.965926, 0.25, 0.25, -0.258819, 0.933013, -1, 1, 2 )
+visible = false
+
+[node name="Copsole" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="QuestionUI" parent="CanvasLayer" instance=ExtResource( 2 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36389, 1.24301, 0 )
+omni_range = 6.678
